@@ -11,7 +11,7 @@ void encrypt(char pln_txt[100], int key)
     key_check(key);
     int temp;
     int ab=5;
-    char new_txt[10]="";
+    char new_txt[100]="";
     char ch, temp2;
 
     for (int i=0;pln_txt[i]!='\n';i++)
@@ -38,7 +38,7 @@ void decrypt(char enc_txt[100], int key)
     if (key>25)
     key_check(key);
     int temp;
-    char new_txt[10]="";
+    char new_txt[100]="";
     char ch, temp2;
 
     for (int i=0;enc_txt[i]!='\n';i++)
@@ -80,7 +80,7 @@ void main()
 
         switch(n)
         {
-        
+
             case 1:
             fflush(stdin);
             printf("\nEnter your plaintext: ");
@@ -90,8 +90,8 @@ void main()
             scanf("%d", &key);
             encrypt(pln_txt, key);
             break;
-            
-            case 2: 
+
+            case 2:
             printf("\nEnter your encrypted text: ");
             fgets(enc_txt, sizeof(enc_txt), stdin);
             while ((getchar()) != '\n');
@@ -99,12 +99,12 @@ void main()
             scanf("%d", &key);
             decrypt(enc_txt, key);
             break;
-            
+
             case 3:
             printf("\nEnter your encrypted text: ");
             fgets(enc_txt, sizeof(enc_txt), stdin);
             bruteforce(enc_txt);
             break;
-        }  
+        }
     }while(n!=4);
 }
