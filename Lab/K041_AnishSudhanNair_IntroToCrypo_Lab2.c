@@ -4,23 +4,18 @@
 #include <string.h>
 
 
-int key_check(int key)
-{
-    return key%26;
-}
-
 int findIndex(char n){
   char alphabet[27] ={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
   for (int i = 0; i < 26; i++) {
     if(n==alphabet[i])
       return i;
   }
-
+  return 0;
 }
+
 void encrypt(char pln_txt[100], char key[10], char alphabet[27])
 {
   int key_len=strlen(key)-1; //removing the additional line feed character
-  printf("%c key len\n", key[6] );
     int temp;
     int ab=5;
     char new_txt[100]="";
@@ -28,27 +23,18 @@ void encrypt(char pln_txt[100], char key[10], char alphabet[27])
 
     for (int i=0, j=0;pln_txt[i]!='\n';i++,j++)
     {
-      printf("J length %d  ", j );
       if(j==key_len)
           j=0;
       ch = tolower(pln_txt[i]);
       int posn = findIndex(ch);
-      //strchr(alphabet, ch);
       int key_posn = findIndex(key[j]);
-      //strchr(alphabet, key[j]);
-      printf(" posn %d  ", posn);
-      printf("key %d  ", key_posn);
       temp = (posn + key_posn)%26;
-      // if (temp>122)
-      //     temp-=26;
-      printf("%d \n ", temp);
       if (pln_txt[i]==' ')
         {
           new_txt[i]= ' ';
           continue;
         }
       temp+='a';
-      printf("%c\n", temp);
       new_txt[i]= temp;
     }
     fflush(stdin);
@@ -70,32 +56,26 @@ void decrypt(char enc_txt[100], char key[10], char alphabet[27])
         ch = tolower(enc_txt[i]);
         int posn = findIndex(ch);
         int key_posn = findIndex(key[j]);
-        printf(" posn %d  ", posn);
-        printf("key %d  ", key_posn);
         temp = (posn - key_posn)%26;
         if (temp<0)
           temp= (26 - key_posn + posn);
-        // if (temp<97)
-        //     temp+=26;
         if (enc_txt[i]==' ')
         {
             new_txt[i]= ' ';
             continue;
         }
-        printf("%d\n", temp);
         temp+='a';
         new_txt[i]= temp;
     }
     printf("%c\n", temp);
-  //  fflush(stdin);
     printf("\nThe plain text is: ");
     printf("%s", new_txt);
 }
 
-void main()
+int main()
 {
     char alphabet[27] ={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
-    char n;
+    int n;
     char key[100];
     char pln_txt[100], enc_txt[100];
 
@@ -133,4 +113,6 @@ void main()
             n=4;
         }
     }while(n!=4);
+
+    return 0;
 }

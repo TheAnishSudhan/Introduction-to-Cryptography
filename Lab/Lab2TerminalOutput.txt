@@ -1,0 +1,58 @@
+(base) anish@Anishs-MacBook-Pro Lab % clang K041_AnishSudhanNair_IntroToCrypo_Lab2.c -o l2
+(base) anish@Anishs-MacBook-Pro Lab % ./l2
+
+
+Welcome to lab 2 of intro to crypto, Anish
+Choose one option - 
+1. Encryption 
+2. Decryption
+1
+
+Enter your plaintext: hereishowitworks
+
+
+Enter the key: anish
+
+The encrypted text is: hrzwpsuwoptjwjrs
+
+Welcome to lab 2 of intro to crypto, Anish
+Choose one option - 
+1. Encryption 
+2. Decryption
+2
+
+Enter your cipher text: hrzwpsuwoptjwjrs
+
+
+Enter the key: anish
+
+s
+
+The plain text is: hereishowitworks
+
+Welcome to lab 2 of intro to crypto, Anish
+Choose one option - 
+1. Encryption 
+2. Decryption
+8
+(base) anish@Anishs-MacBook-Pro Lab % 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
