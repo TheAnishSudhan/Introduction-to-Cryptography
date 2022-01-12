@@ -13,12 +13,12 @@ int findIndex(char n){
   return 0;
 }
 
-void encrypt(char pln_txt[100], char key[10], char alphabet[27])
+void encrypt(char pln_txt[1300], char key[10], char alphabet[27])
 {
   int key_len=strlen(key)-1; //removing the additional line feed character
     int temp;
     int ab=5;
-    char new_txt[100]="";
+    char new_txt[1300]="";
     char ch, temp2;
 
     for (int i=0, j=0;pln_txt[i]!='\n';i++,j++)
@@ -42,11 +42,11 @@ void encrypt(char pln_txt[100], char key[10], char alphabet[27])
     printf("%s", new_txt);
 }
 
-void decrypt(char enc_txt[100], char key[10], char alphabet[27])
+void decrypt(char enc_txt[1300], char key[10], char alphabet[27])
 {
     int key_len=strlen(key)-1; //removing the additional line feed character
     int temp;
-    char new_txt[100]="";
+    char new_txt[1300]="";
     char ch, temp2;
 
     for (int i=0,j=0;enc_txt[i]!='\n';i++,j++)
@@ -77,7 +77,7 @@ int main()
     char alphabet[27] ={'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
     int n;
     char key[100];
-    char pln_txt[100], enc_txt[100];
+    char pln_txt[1300], enc_txt[1300];
 
     do{
         printf("\n\nWelcome to lab 2 of intro to crypto, Anish");
