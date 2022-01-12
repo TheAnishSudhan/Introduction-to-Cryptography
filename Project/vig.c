@@ -142,7 +142,7 @@ int main() {
     string_counter++;
   }
 
-  for (int i = 0; i < 7; i++) {
+  for (int i = 0; i < key; i++) {
     Vg[i] = malloc(sizeof(float)*26);
   }
 
