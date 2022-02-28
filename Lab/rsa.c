@@ -36,7 +36,7 @@ int gcd(int a, int b){
       if(a%i==0 && b%i==0)
         gcdNumber = i;
     }
-  // printf("gcd value: %d\n",gcdNumber );
+
   return gcdNumber;
 }
 
@@ -52,13 +52,6 @@ int gcdOne(int a, int b){
 }
 
 int relativePrime(int eulerNumber){
-
-  // for (int i = 1; i < eulerNumber; i++) {
-  //   if (gcdOne(i, eulerNumber)) {
-  //     printf("Value of e: %d\n",i );
-  //     return i;
-  //   }
-  // }
 
   int value=gcdOne(1,eulerNumber);
 
@@ -94,18 +87,6 @@ int modRecurse(int e, int index, int n){
   return -1;
 }
 
-// int modGenerator(int e, int index, int n){
-//
-//   int times=e/2;
-//   int overflow=e%2;
-//
-//   //make a recursive function
-//
-//   int value=modRecurse();
-//
-//   return -1;
-// }
-
 int alphabetIndex(char letter){
 
   char alphabet[]=("abcdefghijklmnopqrstuvwxyz");
@@ -131,20 +112,13 @@ void encryption(char plainTxt[100], int e, int n){
 
   int plainTxtIndex[100];
 
-
-  // printf("Working?2\n");
+  printf("Cipher text: \n");
 
   for (int i = 0; i < strlen(plainTxt)-1; i++) {
     int index=alphabetIndex(plainTxt[i]);
-    printf("Index; %d\n",index );
     plainTxtIndex[i]=modRecurse(e,index,n);
-    // plainTxtIndex[i]=(pow(index,e));
-    // printf("Power: %d\n", plainTxtIndex[i]);
-    // plainTxtIndex[i]=(plainTxtIndex[i])%n;
     printf("%d\t",plainTxtIndex[i]);
   }
-
-  // printf("%s\n", plainTxtIndex);
 }
 
 void decryption(int cipherTxt[100], int d, int n, int num){
@@ -153,10 +127,7 @@ void decryption(int cipherTxt[100], int d, int n, int num){
   char cipherTxtOutput[100];
 
   for (int i = 0; i < num; i++) {
-    // printf("Working?5\n" );
     cipherTxtIndex[i]=modRecurse(d,cipherTxt[i],n);
-    // printf("Working?4\n" );
-    // cipherTxtIndex[i]=(cipherTxtIndex[i])%n;
     printf("Index: %d\t",cipherTxtIndex[i]);
     char letter=toAlphabet(cipherTxtIndex[i]);
     printf("%c\n", letter);
@@ -183,7 +154,6 @@ int main() {
       }
     } while(!ifPrime(prime_number_1));
 
-
     do {
       printf("Enter prime number 2: ");
       scanf("%d",&prime_number_2);
@@ -196,7 +166,6 @@ int main() {
   int eulerNumber=eulerFunction(prime_number_1, prime_number_2);
 
   int e=relativePrime(eulerNumber);
-  // e=17;
 
   int d = dGenerator(e, eulerNumber);
 
@@ -208,27 +177,20 @@ int main() {
   printf("Enter plain text for encryption: ");
   fgets(plainTxt, sizeof(plainTxt), stdin);
   while ((getchar())!='\n');
-  // scanf("%s", &plainTxt[30]);
 
   fflush(stdin);
 
-  printf("Working?1\n" );
-
   encryption(plainTxt,e,n);
-
-  // printf("Working?2\n" );
 
   int number=0;
 
-  printf("Enter no of letters of cipher text for decryption: \n");
+  printf("\nEnter no of letters of cipher text for decryption: \n");
   scanf("%d", &number );
 
-  printf("\nEnter cipher text numbers on a new line\n");
+  printf("\nEnter each of the cipher text numbers on new lines\n");
   for (int i = 0; i < number; i++) {
     scanf("%d",&cipherTxt[i] );
-    printf("\n" );
   }
-  // scanf("%d", &cipherTxt[30]);
 
   decryption(cipherTxt,d,n, number);
 
